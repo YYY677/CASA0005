@@ -1,0 +1,28 @@
+{
+    "id": "D283D0F9",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1721466560899.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "id": "2f62897456234133b70c14eeb8d0c761",
+        "name": "BluePlaquesSub",
+        "title": "BluePlaquesSub",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 435626790401,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721466560899,
+    "read_only": false,
+    "read_only_alternatives": []
+}

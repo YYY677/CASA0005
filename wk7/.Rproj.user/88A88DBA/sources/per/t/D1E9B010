@@ -1,0 +1,28 @@
+{
+    "id": "D1E9B010",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1721577401120.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "id": "a10900a5e850411fbddb2c6d53636504",
+        "name": "LWard_nb",
+        "title": "LWard_nb",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1721573665,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721577401120,
+    "read_only": false,
+    "read_only_alternatives": []
+}

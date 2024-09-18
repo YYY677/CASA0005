@@ -1,0 +1,28 @@
+{
+    "id": "649F3275",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1720682508040.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "id": "3184830e10d14e00b0173df2b7102e4f",
+        "name": "histinfo",
+        "title": "histinfo",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7810123700365321520,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1720682508040,
+    "read_only": false,
+    "read_only_alternatives": []
+}

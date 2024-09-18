@@ -1,0 +1,28 @@
+{
+    "id": "348BB632",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1721579201480.0,
+    "source_on_save": false,
+    "relative_order": 12,
+    "properties": {
+        "id": "3cb7eccef9134b8b89b1e6db7c104f60",
+        "name": "Lward.lw",
+        "title": "Lward.lw",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 3092317469320,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721579201480,
+    "read_only": false,
+    "read_only_alternatives": []
+}

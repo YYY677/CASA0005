@@ -1,0 +1,28 @@
+{
+    "id": "305A4EA7",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1721646829592.0,
+    "source_on_save": false,
+    "relative_order": 14,
+    "properties": {
+        "id": "0c1f412b97f14a8a89112bf58d42a4de",
+        "name": "I_LWard_Global_Density",
+        "title": "I_LWard_Global_Density",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 3092317469185,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721646829592,
+    "read_only": false,
+    "read_only_alternatives": []
+}

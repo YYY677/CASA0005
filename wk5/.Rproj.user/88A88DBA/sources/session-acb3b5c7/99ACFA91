@@ -1,0 +1,28 @@
+{
+    "id": "99ACFA91",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1720854212840.0,
+    "source_on_save": false,
+    "relative_order": 9,
+    "properties": {
+        "id": "dcbdd43cc06147988c2176464cc65aa9",
+        "name": "Londonbb",
+        "title": "Londonbb",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2478510836879076400,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1720854212840,
+    "read_only": false,
+    "read_only_alternatives": []
+}

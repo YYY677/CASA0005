@@ -1,0 +1,28 @@
+{
+    "id": "6425EE1B",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1721468696943.0,
+    "source_on_save": false,
+    "relative_order": 14,
+    "properties": {
+        "id": "6fae30627d5846918f29856cd4aa8cc5",
+        "name": "teststats",
+        "title": "teststats",
+        "language": "R",
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 4685393179021220954,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721468696943,
+    "read_only": false,
+    "read_only_alternatives": []
+}
