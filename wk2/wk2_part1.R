@@ -1,4 +1,8 @@
-library(readr)
+getwd()
+ls()#查看当前环境的所有变量
+# rm(xx) 移除xx变量
+
+library(tidyverse)
 mycsv <- read_csv("fly-tipping-borough.csv", locale = locale(encoding = "GBK"), skip = 1) 
 
 
@@ -62,7 +66,7 @@ LondonDataOSK<- read.csv("ward-profiles-excel-version.csv",
 
 #a .csv file (directly from the web this time
 #skipping over the 'n/a' entries as you go...
-LondonData <- read_csv("https://data.london.gov.uk/download/ward-profiles-and-atlas/772d2d64-e8c6-46cb-86f9-e52b4c7851bc/ward-profiles-excel-version.csv",
+LondonDataOSK <- read_csv("https://data.london.gov.uk/download/ward-profiles-and-atlas/772d2d64-e8c6-46cb-86f9-e52b4c7851bc/ward-profiles-excel-version.csv",
                        locale = locale(encoding = "latin1"),
                        na = "n/a")
 
@@ -80,6 +84,16 @@ Datatypelist <- LondonDataOSK %>%
                values_to="Variable_class")
 
 Datatypelist
+
+LondonData <- read_csv("https://data.london.gov.uk/download/ward-profiles-and-atlas/772d2d64-e8c6-46cb-86f9-e52b4c7851bc/ward-profiles-excel-version.csv", 
+                       locale = locale(encoding = "latin1"))
+
+#会发现包含n/a的列类型变成了str（对比datatypelist1和2）
+Datatypelist2 <- LondonData %>% 
+  summarise_all(class) %>%
+  pivot_longer(everything(), 
+               names_to="All_variables", 
+               values_to="Variable_class")
 
 #If you ever wish to quickly edit data, then use edit()
 LondonData <- edit(LondonDataOSK)
@@ -100,6 +114,9 @@ LondonBoroughs<-LondonData%>%
 
 #查询列名！有时列名和老师给的有些许差异
 colnames(LondonData)
+
+#使用 make.names() 格式化列名
+names(LondonData) <- make.names(names(LondonData), unique = TRUE)
 
 #we could filter based on a variable,
 Femalelifeexp<- LondonData %>% 

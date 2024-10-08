@@ -4,4 +4,4 @@ statistical-gis-boundaries-london
 *.gpkg
 gadm41_GBR_shp
 *.shp
-
+.Rproj.user

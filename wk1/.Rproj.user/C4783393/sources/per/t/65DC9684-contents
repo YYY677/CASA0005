@@ -1,8 +1,11 @@
-library(sf)
 library(tmap) 
 library(tmaptools)
 library(RSQLite)
 library(tidyverse)
+library(dplyr)
+
+install.packages(c("sf", "tmap", "tmaptools", "RSQLite", "tidyverse"), 
+                 repos = "https://www.stats.bris.ac.uk/R/")
 
 #read in the shapefile
 library(sf)
@@ -42,8 +45,8 @@ library(tmap)
 # set tmap to plot
 tmap_mode("plot")
 # change the fill to your column name if different
-shape %>%
-  qtm(.,fill = "2012-13")
+
+qtm(shape,fill = "2012-13")
 
 
 # Export data write to a .gpkg
