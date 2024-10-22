@@ -6,4 +6,5 @@ statistical-gis-boundaries-london
 *.shp
 .Rproj.user
 *gpkg
-
+*.xlsx
+*.csv
