@@ -167,24 +167,24 @@ LondonBoroughs <- LondonBoroughs %>%
   clean_names()
 
 #Janitor removes all capitals and uses an underscore wherever there is a space
-#library(janitor)
-#LondonBoroughs <- LondonBoroughs %>%
-#  #here the ., means all data
-#  clean_names(., case="big_camel")
+library(janitor)
+LondonBoroughs <- LondonBoroughs %>%
+ #here the ., means all data
+ clean_names(., case="big_camel")
 
 
 #More dplyr verbs
 #mutate
 Life_expectancy <- LondonBoroughs %>% 
   #new column with average of male and female life expectancy
-  mutate(averagelifeexpectancy= (female_life_expectancy_2009_13 +
-                                   male_life_expectancy_2009_13)/2)%>%
+  mutate(averagelifeexpectancy= (FemaleLifeExpectancy2009_13 +
+                                   MaleLifeExpectancy2009_13)/2)%>%
   #new column with normalised life expectancy
   mutate(normalisedlifeepectancy= averagelifeexpectancy /
            mean(averagelifeexpectancy))%>%
   #select only columns we want, 不选择将会存储全部列
-  dplyr::select(new_code,
-                borough,
+  dplyr::select(NewCode,
+                WardName,
                 averagelifeexpectancy, 
                 normalisedlifeepectancy)%>%
   #arrange in descending order
@@ -237,6 +237,7 @@ Life_expectancy4 <- Life_expectancy %>%
   mutate(across(UKdiff, round, 0))
 
 
+
 #Plotting
 plot(LondonBoroughs$male_life_expectancy_2009_13,
      LondonBoroughs$percent_children_in_reception_year_who_are_obese_2011_12_to_2013_14)
@@ -254,27 +255,3 @@ plot_ly(LondonBoroughs,
         text = ~borough, 
         type = "scatter", 
         mode = "markers")
-
-
-# 2.5.8 
-#Spatial Data in R
-#很奇怪一些包安装不了
-install.packages("maptools")
-install.packages(c("classInt", "tmap"))
-# might also need these ones
-install.packages(c("RColorBrewer", "sp", "rgeos", 
-                   "tmaptools", "sf", "downloader", "rgdal", 
-                   "geojsonio"))
-
-library(maptools)
-library(RColorBrewer)
-library(classInt)
-library(sp)
-library(rgeos)
-library(tmap)
-library(tmaptools)
-library(sf)
-library(rgdal)
-library(geojsonio)
-
-#地图数据下载不了 后面的代码没弄。。。

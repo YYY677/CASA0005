@@ -36,6 +36,7 @@ AusoutlineSF <- AusoutlineSP %>%
 
 # Raster
 # WorldClim data
+library(sp)
 library(raster)
 library(terra)
 jan<-terra::rast(here("wc2.1_5m_tavg", "wc2.1_5m_tavg_01.tif"))
@@ -118,7 +119,7 @@ Aucitytemp2 <- AUcitytemp %>%
 Perthtemp <- Aucitytemp2 %>%
   filter(site=="Perth")
 #Or the row location:
-Perthtemp <- Aucitytemp2[3,]
+Perthtemp <- Aucitytemp2[3,3:14]
 
 #Make a histogram of Perth’s temperature.
 hist(as.numeric(Perthtemp))
@@ -171,7 +172,7 @@ crs(worldclimtemp)
 #Perfect! Now let’s continue…
 Austemp <- Ausoutline %>%
   # now crop our temp data to the extent
-  terra::crop(worldclimtemp,.)
+  terra::crop(worldclimtemp,.) #crop() 函数用于裁剪栅格数据
 
 # plot the output
 plot(Austemp)
@@ -220,8 +221,7 @@ squishdata<-exactAusdf%>%
 
 #selecting two months using filter() from dplyr
 twomonths <- squishdata %>%
-  # | = OR
-filter(., Month=="Jan" | Month=="Jun")
+filter(., Month=="Jan" | Month=="Jun") # | = OR
 
 meantwomonths <- twomonths %>%
   group_by(Month) %>%
@@ -258,7 +258,7 @@ ggplot(data_complete_cases, aes(x=Temp, na.rm=TRUE))+
   labs(title="Ggplot2 faceted histogram of Australian temperatures", 
        x="Temperature",
        y="Frequency")+
-  facet_grid(Month ~ .)+
+  facet_grid(Month ~ .)+ #对图形进行分面，每个月份将单独生成一个子图
   theme(plot.title = element_text(hjust = 0.5))
 
 
