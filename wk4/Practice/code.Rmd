@@ -1,0 +1,81 @@
+加载包
+```{r}
+library(sf)
+library(tidyverse)
+library(janitor)
+library(tmap)
+```
+加载文件
+```{r}
+shape <- st_read('World_Countries_(Generalized).geojson')
+csv <- read.csv('HDR23-24_Composite_indices_complete_time_series.csv')
+```
+
+提取需要的数据
+```{r}
+gii <- csv %>% 
+  janitor::clean_names(.) %>% 
+  select(country, gii_2011, gii_2019)
+```
+
+整合表格数据至空间数据
+```{r}
+shape <- shape %>% 
+  left_join(gii, by = join_by(COUNTRY == country))
+
+```
+
+删除无数据的国家
+```{r}
+country_gii <- shape %>% 
+  filter( !is.na(gii_2011) & !is.na(gii_2019))
+
+```
+
+
+创建差值列
+```{r}
+country_gii <- country_gii %>% 
+  mutate(diff_11_19 = as.numeric(gii_2019 - gii_2011)
+         )
+```
+
+可视化
+```{r}
+library(tmap)
+tmap_mode("plot")
+
+tm_shape(country_gii) + 
+  tm_polygons("diff_11_19",
+              style="pretty",             # 自动选择合适的分段方式
+              palette="RdBu",             # 使用红蓝分段色彩方案
+              breaks=5,                   # 指定分成5个区间
+              title="Numbers of years",
+              midpoint = 0  
+              ) +
+  tm_compass(position = c("left", "bottom"), type = "arrow") +
+  tm_scale_bar(position = c("left", "bottom")) +
+  tm_layout(title = "Difference of gender inequality index between 2019 and 2011",
+            legend.position = c("right", "bottom"))
+
+
+```
+
+
+保存至文件
+```{r}
+st_write(country_gii, "file.gpkg", layer = "giidiff_11_19", delete_dsn = TRUE)
+```
+测试
+
+```{r}
+
+shape1 <- st_read('file.gpkg')
+
+#获取 geopackage 文件中的图层信息
+layer_info <- st_layers('file.gpkg')
+print(layer_info)
+```
+
+
+
