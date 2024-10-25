@@ -9,9 +9,9 @@ library(tmap)
 
 ```{r}
 # read
-report <- read_csv(here::here("Report_Card_Assessment_Data_2018-19_School_Year_20241003.csv"),na= "NULL")
+report <- read_csv(here::here("Report_Card_Assessment_Data_2018-19_School_Year_20241003.csv"), na= "NULL")
 
-shape <- st_read(here::here(      "Washington_Counties_with_Natural_Shoreline___washsh_area",                           "Washington_Counties_with_Natural_Shoreline___washsh_area.shp"))
+shape <- st_read(here::here(  "Washington_Counties_with_Natural_Shoreline___washsh_area",                           "Washington_Counties_with_Natural_Shoreline___washsh_area.shp"))
 ```
 
 # Task
@@ -28,10 +28,16 @@ Need to filter for science and mutate to work out % that have met
 
 ```{r}
 Datatypelist <- report %>% 
-  summarise_all(class) %>%
-  pivot_longer(everything(), 
-               names_to="All_variables", 
-               values_to="Variable_class")
+  summarise_all(class) %>% 
+  pivot_longer(everything(),
+               names_to='All_variables',
+               values_to='Variable_class')
+#or
+Datatypelist <- report %>% 
+  summarise(across(everything(), class)) %>% 
+  pivot_longer(everything(),
+               names_to='All_variables',
+               values_to='Variable_class')
 
 Datatypelist
 
@@ -73,8 +79,12 @@ state_average2 <- county_only %>%
   summarise_at(c("total_county_met_standard", "total_county_to_test"), sum, na.rm = TRUE)%>%
   mutate(state_average=((total_county_met_standard /total_county_to_test)*100))%>%
   pull(state_average)
-  
+#or
 
+state_average3 <- county_only %>% 
+  summarise(across(c("total_county_met_standard", "total_county_to_test"), sum, na.rm = TRUE)) %>% 
+  mutate(state_average=((total_county_met_standard /total_county_to_test)*100)) %>% 
+  pull(state_average)
 ```
 
 Ok, now we need to make a column that compares each county value to the state average and some text to say if it is above or below...
@@ -99,6 +109,7 @@ joined_data <- shape %>%
   left_join(., 
             county_only_above_below_state,
             by = c("countylabe" = "county"))
+
 ```
 
 Let's map...
@@ -119,10 +130,9 @@ Let's map...
               midpoint=NA,
               #title="Number of years",
               alpha = 0.5) + 
-  tm_compass(position = c("left", "bottom"),type = "arrow") + 
+  tm_compass(position = c("left", "bottom"), type = "arrow") + 
   tm_scale_bar(position = c("left", "bottom")) +
-  tm_layout(title = "Counties above or below state avearge for science in all grades", 
-            legend.position = c("right", "bottom"))
+  tm_layout(title = "Counties above or below state avearge for science in all grades", legend.position = c("right", "bottom"))
 
 
 ```
