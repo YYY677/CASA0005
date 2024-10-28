@@ -9,3 +9,4 @@ statistical-gis-boundaries-london
 *.xlsx
 *.csv
 *.RData
+*data/
